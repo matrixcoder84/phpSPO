@@ -12,7 +12,19 @@ use Office365\PHP\Client\Runtime\ResourcePathServiceOperation;
 
 class UserCollection extends ClientObjectCollection
 {
-
+     /**
+     * Create a user
+     * @param UserCreationInformation $parameters
+     * @return User
+     */
+    public function add(UserCreationInformation $parameters)
+    {
+        $user = new User($this->getContext(), $this->getResourcePath());
+        $qry = new InvokePostMethodQuery($this->getResourcePath(),null,null, $parameters);
+        $this->getContext()->addQuery($qry, $user);
+        $this->addChild($user);
+        return $user;
+    }
     /**
      * Gets the user with the specified member identifier (ID).
      * @param int $id
