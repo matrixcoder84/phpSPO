@@ -1,0 +1,32 @@
+<?php
+
+namespace Office365\PHP\Client\SharePoint;
+use Office365\PHP\Client\Runtime\ClientValueObject;
+
+/**
+ * An object used to facilitate creation of a cross-site user.
+ */
+class UserCreationInformation extends ClientValueObject
+{
+    /**
+     * Gets or sets a string that contains the name of the user to be created.
+     */
+    public $Title;
+
+    /**
+     * Gets or sets a string that contains the email of the user to be created.
+     */
+    public $Email;
+
+    /**
+     * Gets or sets a string that contains the login name of the user to be created.
+     */
+    public $LoginName;
+
+    public function __construct($loginName)
+    {
+        $this->LoginName = $loginName;
+        parent::__construct("User");
+    }
+
+}
